@@ -21,17 +21,35 @@ const userSchema = new mongoose.Schema(
       minlength: [6, 'Password must be at least 6 characters'],
       select: false,
     },
+    phone: {
+      type: String,
+      trim: true,
+    },
     role: {
       type: String,
-      enum: ['student', 'instructor', 'admin'],
-      default: 'student',
+      enum: ['parent', 'tutor', 'admin'],
+      required: true,
     },
-    enrolledCourses: [
+    isVerified: {
+      type: Boolean,
+      default: false,
+    },
+    isActive: {
+      type: Boolean,
+      default: true,
+    },
+    // For parents: array of kids they manage
+    kids: [
       {
         type: mongoose.Schema.Types.ObjectId,
-        ref: 'Course',
+        ref: 'Student',
       },
     ],
+    // For tutors: reference to their profile
+    tutorProfile: {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: 'TutorProfile',
+    },
   },
   {
     timestamps: true,
@@ -55,4 +73,3 @@ userSchema.methods.matchPassword = async function (enteredPassword) {
 const User = mongoose.model('User', userSchema);
 
 export default User;
-

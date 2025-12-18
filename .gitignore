@@ -23,6 +23,17 @@ backend/node_modules/
 backend/dist/
 backend/build/
 
+# Admin App
+learn-up-admin/node_modules/
+learn-up-admin/.next/
+learn-up-admin/out/
+learn-up-admin/build
+learn-up-admin/.vercel
+learn-up-admin/.turbo
+learn-up-admin/.env*.local
+learn-up-admin/*.tsbuildinfo
+learn-up-admin/next-env.d.ts
+
 # Environment variables
 .env
 .env.local
@@ -82,9 +93,4 @@ coverage/
 *.db
 *.sqlite
 *.sqlite3
-
-# Package manager locks (optional - uncomment if you want to ignore)
-# package-lock.json
-# yarn.lock
-# pnpm-lock.yaml
 
