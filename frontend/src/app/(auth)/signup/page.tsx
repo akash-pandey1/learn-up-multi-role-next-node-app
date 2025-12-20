@@ -3,6 +3,7 @@
 import { useState, useEffect } from 'react';
 import { useRouter } from 'next/navigation';
 import Link from 'next/link';
+import Button from '@/components/ui/Button';
 import { userAPI } from '@/lib/api';
 import { saveToken, isAuthenticated } from '@/lib/auth';
 
@@ -74,27 +75,27 @@ export default function SignupPage() {
       <div className="w-full max-w-md">
         {/* Logo/Brand */}
         <div className="text-center mb-8">
-          <h1 className="text-4xl font-bold mb-2" style={{ color: '#5D4037' }}>
+          <h1 className="text-4xl font-bold mb-2 text-heading">
             Learn-Up
           </h1>
-          <p style={{ color: '#5D4037', opacity: 0.7 }}>
+          <p className="text-body opacity-80">
             Start your learning journey today
           </p>
         </div>
 
         {/* Signup Card */}
-        <div className="rounded-2xl shadow-xl p-8" style={{ backgroundColor: '#FFFFFF' }}>
+        <div className="rounded-2xl shadow-xl p-8 bg-card">
           {/* Error Message */}
           {error && (
-            <div className="mb-4 p-3 rounded-lg border" style={{ backgroundColor: '#FFB6C1', borderColor: '#FFB6C1' }}>
-              <p className="text-sm" style={{ color: '#5D4037' }}>{error}</p>
+            <div className="mb-4 p-3 rounded-lg border bg-softPeach border-secondary">
+              <p className="text-sm text-heading">{error}</p>
             </div>
           )}
 
           {/* Form */}
           <form onSubmit={handleSubmit} className="space-y-4">
             <div>
-              <label htmlFor="name" className="block text-sm font-medium mb-1" style={{ color: '#5D4037' }}>
+              <label htmlFor="name" className="block text-sm font-medium mb-1 text-heading">
                 Full Name
               </label>
               <input
@@ -104,20 +105,13 @@ export default function SignupPage() {
                 required
                 value={formData.name}
                 onChange={handleChange}
-                className="w-full px-4 py-3 rounded-lg border transition-colors"
-                style={{ 
-                  borderColor: '#CDB4DB', 
-                  backgroundColor: '#FFFFFF',
-                  color: '#5D4037',
-                }}
-                onFocus={(e) => e.target.style.borderColor = '#FFB6C1'}
-                onBlur={(e) => e.target.style.borderColor = '#CDB4DB'}
+                className="w-full px-4 py-3 rounded-lg border border-secondary bg-card text-heading transition-colors focus:border-primary"
                 placeholder="Enter your full name"
               />
             </div>
 
             <div>
-              <label htmlFor="role" className="block text-sm font-medium mb-1" style={{ color: '#5D4037' }}>
+              <label htmlFor="role" className="block text-sm font-medium mb-1 text-heading">
                 I am a
               </label>
               <select
@@ -125,14 +119,7 @@ export default function SignupPage() {
                 name="role"
                 value={formData.role}
                 onChange={handleChange}
-                className="w-full px-4 py-3 rounded-lg border transition-colors"
-                style={{ 
-                  borderColor: '#CDB4DB', 
-                  backgroundColor: '#FFFFFF',
-                  color: '#5D4037',
-                }}
-                onFocus={(e) => e.target.style.borderColor = '#FFB6C1'}
-                onBlur={(e) => e.target.style.borderColor = '#CDB4DB'}
+                className="w-full px-4 py-3 rounded-lg border border-secondary bg-card text-heading transition-colors focus:border-primary"
               >
                 <option value="student">Student</option>
                 <option value="instructor">Instructor</option>
@@ -140,7 +127,7 @@ export default function SignupPage() {
             </div>
 
             <div>
-              <label htmlFor="email" className="block text-sm font-medium mb-1" style={{ color: '#5D4037' }}>
+              <label htmlFor="email" className="block text-sm font-medium mb-1 text-heading">
                 Email Address
               </label>
               <input
@@ -150,20 +137,13 @@ export default function SignupPage() {
                 required
                 value={formData.email}
                 onChange={handleChange}
-                className="w-full px-4 py-3 rounded-lg border transition-colors"
-                style={{ 
-                  borderColor: '#CDB4DB', 
-                  backgroundColor: '#FFFFFF',
-                  color: '#5D4037',
-                }}
-                onFocus={(e) => e.target.style.borderColor = '#FFB6C1'}
-                onBlur={(e) => e.target.style.borderColor = '#CDB4DB'}
+                className="w-full px-4 py-3 rounded-lg border border-secondary bg-card text-heading transition-colors focus:border-primary"
                 placeholder="Enter your email"
               />
             </div>
 
             <div>
-              <label htmlFor="password" className="block text-sm font-medium mb-1" style={{ color: '#5D4037' }}>
+              <label htmlFor="password" className="block text-sm font-medium mb-1 text-heading">
                 Password
               </label>
               <input
@@ -173,24 +153,17 @@ export default function SignupPage() {
                 required
                 value={formData.password}
                 onChange={handleChange}
-                className="w-full px-4 py-3 rounded-lg border transition-colors"
-                style={{ 
-                  borderColor: '#CDB4DB', 
-                  backgroundColor: '#FFFFFF',
-                  color: '#5D4037',
-                }}
-                onFocus={(e) => e.target.style.borderColor = '#FFB6C1'}
-                onBlur={(e) => e.target.style.borderColor = '#CDB4DB'}
+                className="w-full px-4 py-3 rounded-lg border border-secondary bg-card text-heading transition-colors focus:border-primary"
                 placeholder="Enter your password"
                 minLength={6}
               />
-              <p className="mt-1 text-xs" style={{ color: '#5D4037', opacity: 0.6 }}>
+              <p className="mt-1 text-xs text-muted">
                 Password must be at least 6 characters
               </p>
             </div>
 
             <div>
-              <label htmlFor="confirmPassword" className="block text-sm font-medium mb-1" style={{ color: '#5D4037' }}>
+              <label htmlFor="confirmPassword" className="block text-sm font-medium mb-1 text-heading">
                 Confirm Password
               </label>
               <input
@@ -200,51 +173,28 @@ export default function SignupPage() {
                 required
                 value={formData.confirmPassword}
                 onChange={handleChange}
-                className="w-full px-4 py-3 rounded-lg border transition-colors"
-                style={{ 
-                  borderColor: '#CDB4DB', 
-                  backgroundColor: '#FFFFFF',
-                  color: '#5D4037',
-                }}
-                onFocus={(e) => e.target.style.borderColor = '#FFB6C1'}
-                onBlur={(e) => e.target.style.borderColor = '#CDB4DB'}
+                className="w-full px-4 py-3 rounded-lg border border-secondary bg-card text-heading transition-colors focus:border-primary"
                 placeholder="Confirm your password"
               />
             </div>
 
-            <button
+            <Button
               type="submit"
-              disabled={loading}
-              className="w-full py-3 px-4 font-medium rounded-lg transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
-              style={{ 
-                backgroundColor: '#FFB6C1',
-                color: '#5D4037',
-              }}
-              onMouseEnter={(e) => !e.currentTarget.disabled && (e.currentTarget.style.backgroundColor = '#FFD6A5')}
-              onMouseLeave={(e) => !e.currentTarget.disabled && (e.currentTarget.style.backgroundColor = '#FFB6C1')}
+              isLoading={loading}
+              fullWidth
+              size="md"
             >
-              {loading ? (
-                <span className="flex items-center justify-center">
-                  <svg className="animate-spin -ml-1 mr-3 h-5 w-5 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
-                    <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
-                    <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
-                  </svg>
-                  Creating account...
-                </span>
-              ) : (
-                'Create Account'
-              )}
-            </button>
+              {loading ? 'Creating account...' : 'Create Account'}
+            </Button>
           </form>
 
           {/* Login link */}
           <div className="mt-6 text-center">
-            <p className="text-sm" style={{ color: '#5D4037', opacity: 0.7 }}>
+            <p className="text-sm text-body opacity-80">
               Already have an account?{' '}
               <Link
                 href="/login"
-                className="font-medium transition-colors hover:opacity-80"
-                style={{ color: '#CDB4DB' }}
+                className="font-medium text-secondary transition-colors hover:opacity-80"
               >
                 Sign in
               </Link>
@@ -253,7 +203,7 @@ export default function SignupPage() {
         </div>
 
         {/* Footer Text */}
-        <p className="mt-8 text-center text-sm" style={{ color: '#5D4037', opacity: 0.6 }}>
+        <p className="mt-8 text-center text-sm text-muted">
           By continuing, you agree to Learn-Up's Terms of Service and Privacy Policy
         </p>
       </div>

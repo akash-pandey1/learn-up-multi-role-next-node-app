@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, ReactNode } from 'react';
+import { useState, useEffect, ReactNode } from 'react';
 import { useRouter, usePathname } from 'next/navigation';
 import {
   Box,
@@ -48,9 +48,14 @@ const menuItems = [
 export default function AdminLayout({ children }: AdminLayoutProps) {
   const [mobileOpen, setMobileOpen] = useState(false);
   const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
+  const [user, setUser] = useState<any | null>(null);
   const router = useRouter();
   const pathname = usePathname();
-  const user = getUser();
+
+  useEffect(() => {
+    // Get user data after component mounts to avoid hydration mismatch
+    setUser(getUser());
+  }, []);
 
   const handleDrawerToggle = () => {
     setMobileOpen(!mobileOpen);

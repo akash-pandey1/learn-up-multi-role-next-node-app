@@ -1,29 +1,49 @@
 @import "tailwindcss";
 
 :root {
-  --background: #FFF6E5;
-  --foreground: #5D4037;
-  --primary: #FFB6C1;
-  --secondary: #CDB4DB;
-  --accent: #A8E6CF;
-  --highlight: #FFD6A5;
-  --text: #5D4037;
+  /* Primary Colors */
+  --primary: #7C3AED;
+  --secondary: #EC4899;
+  --accent: #F97316;
+  --highlight: #FACC15;
+  --success: #22C55E;
+  --info: #38BDF8;
+
+  /* Background Colors */
+  --app: #FFF7ED;
+  --card: #FFFFFF;
+  --softPurple: #F3E8FF;
+  --softPeach: #FFE4E6;
+
+  /* Text Colors */
+  --heading: #1F2937;
+  --body: #4B5563;
+  --muted: #9CA3AF;
+
+  /* Gradients */
+  --hero-gradient: linear-gradient(135deg, var(--primary), var(--secondary), var(--accent));
 }
 
 @theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
   --color-primary: var(--primary);
   --color-secondary: var(--secondary);
   --color-accent: var(--accent);
   --color-highlight: var(--highlight);
-  --color-text: var(--text);
+  --color-success: var(--success);
+  --color-info: var(--info);
+  --color-app: var(--app);
+  --color-card: var(--card);
+  --color-softPurple: var(--softPurple);
+  --color-softPeach: var(--softPeach);
+  --color-heading: var(--heading);
+  --color-body: var(--body);
+  --color-muted: var(--muted);
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
+  background: var(--app);
+  color: var(--body);
   font-family: Arial, Helvetica, sans-serif;
 }
